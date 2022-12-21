@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CCS1 Final Project</h1>
+     
+    <div class="login">
+        <h2>Log-In</h2>
+
+        <form>
+        <div class="text">
+            <input type="text" placeholder="Username" maxlength="8" id="username" name="email">
+        </div>
+        
+        <div class="text">
+            <input type="password" placeholder="Password" maxlength="8" id="password" name="password">
+        </div>
+        
+        <p id="answer"></p>
+        
+        <button class="cta" id="log" onclick="logIn()">
+            <span class="hover-underline-animation"> Log-In</span>
+            <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
+                <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" data-name="Path 10" id="Path_10"></path>
+            </svg>
+        </button>
+        <br><br>
+        <div class="create">
+            <a href="create.html">Create New Account</a>
+        </div>
+        </form>
+    </div>
+
+
+<script>
+
+var attempt = 3;
+var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+function logIn() {
+    console.log("test");
+    var user = document.getElementById("username");
+    var pass = document.getElementById("password");
+    let lowerCaseLetters = /[a-z]/g;
+    let upperCaseLetters = /[A-Z]/g;
+    let num = /[0-9]/g;
+    let userHasLowerCase = false;
+    let userHasUpperCase = false;
+    let userHasNumbers = false;
+    let userIsValidLength = false;
+    let userHasSpecChar = false;
+    let passHasNumbers = false;
+    let passIsValidLength = false;
+    let passHasSpecChar = false;
+    let isValidUsername = false;
+    let isValidPassword = false;
+
+    if(user.value.match(lowerCaseLetters))
+    {
+        console.log("username has lowercase");  
+        userHasLowerCase = true;
+    }
+
+    if(user.value.match(upperCaseLetters))
+    {  
+        console.log("username has uppercase");
+        userHasUpperCase = true;
+    }
+
+    if(user.value.match(num))
+    {  
+        console.log("username has num");
+        userHasNumbers = true;
+    }
+
+    if(user.value.match(format))
+    {
+        console.log("username has special characters");
+        userHasSpecChar = true;
+    }
+
+    if(user.value.length >= 8)
+    {
+        console.log("username is valid length");
+        userIsValidLength = true;
+    }
+
+    if(pass.value.match(num))
+    {  
+        console.log("password has num");
+        passHasNumbers = true;
+    }
+
+    if(pass.value.match(format))
+    {
+        console.log("password has special characters");
+        passHasSpecChar = true;
+    }
+
+    if(pass.value.length >= 8)
+    {
+        console.log("password is valid length");
+        passIsValidLength = true;
+    }
+
+    if(userHasLowerCase && userHasUpperCase)
+    {
+        isValidUsername = true;
+    }
+
+    if(userHasLowerCase && userHasUpperCase && passHasNumbers && passHasSpecChar && passIsValidLength)
+    {
+        isValidPassword = true;
+    }
+
+    if(isValidUsername && isValidPassword)
+    {
+        window.location.href="welcome.html"; 
+        alert("Success!");
+        return false;
+    }
+    else
+    {
+        attempt--;
+        alert("You have "+attempt+" attempt(s) left");
+        alert("You entered an invalid keyword");
+        if( attempt == 0){
+        document.getElementById("username").disabled = true;
+        document.getElementById("password").disabled = true;
+        document.getElementById("log").disabled = true;
+        return false;
+        }
+    }
+}
+</script>
+</body>
+</html>

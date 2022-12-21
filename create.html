@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="create.css">
+    <title>Create Account</title>
+
+    <script>
+        function check() {
+            var firstname = document.getElementById('firstN').value;
+            var lastname = document.getElementById('lastN').value;
+            var birthday = document.getElementById('bday').value;
+            var username = document.getElementById('user').value;
+            var email = document.getElementById('email').value;
+            var number = document.getElementById('num').value;
+            var gender = document.getElementById('gender').value;
+            localStorage.setItem('firstN', firstname);
+            localStorage.setItem('lastN', lastname);
+            localStorage.setItem('bday', birthday);
+            localStorage.setItem('user', username);
+            localStorage.setItem('email', email);
+            localStorage.setItem('num', number);
+            localStorage.setItem('gender', gender);
+            window.location.href="./verify.html";
+        }
+    </script>
+</head>
+<body>
+    <a href="index.html">Cancel</a>
+    <div class="bio">
+        <h2>Create New Account</h2>
+    <form>
+        <div class="text">
+        <input type="text" id="firstN" placeholder=""><hr>
+        <label>First Name</label>
+
+        <input type="text" id="lastN" placeholder=""><hr>
+        <label>Last Name</label>
+
+        <input type="text" id="num" placeholder=""><hr>
+        <label>Number</label>
+
+        <input type="email" id="email" placeholder=""><hr>
+        <label>Email</label>
+
+        <input type="text" id="bday" placeholder=""><hr>
+        <label>Birthday</label>
+
+        <input type="text" id="gender" placeholder=""><hr>
+        <label>Enter Gender</label>
+
+        <input type="text" id="user" placeholder=""><hr>
+        <label>Username</label>
+
+        <input type="password" id="password" placeholder=""><hr>
+        <label>Password</label>
+
+        <input type="password" id="password" placeholder=""><hr>
+        <label>Confirm Password</label>
+
+        <br><br><br>
+
+        </div>
+        <button type="button" class="cta" id="log" value="Submit" onclick="check()">
+            <span class="hover-underline-animation"> Submit</span>
+            <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal">
+                <path transform="translate(30)" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" data-name="Path 10" id="Path_10"></path>
+            </svg>
+        </button>
+    </form>
+    </div>
+
+   
+</body>
+</html>
+
+
